@@ -73,7 +73,9 @@ public class RotateArray {
     public static void rotate2(int[] nums, int k) {
         int len = nums.length;
         int tmp,pre;
+        // 每循环一次，就移动一次
         for (int i = 0; i < k; i++) {
+            // 因为是右移，每次移动先把数组最后一个元素取出
             pre = nums[len - 1];
             for (int j = 0; j < len; j++) {
                 // 将当前值跟上一个值交换
