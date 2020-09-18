@@ -15,8 +15,14 @@ public class RotateArray {
 //        int[] nums = new int[]{-1}; int k = 20;
 //        int[] nums = new int[]{1,2}; int k = 3;
 //        int[] nums = new int[]{1,2,3,4,5}; int k = 3;
+        // v1.3 反转 最优
         rotate(nums, k);
-//        rotate0(nums, k);
+        // v1.2 再优化
+        rotate2(nums, k);
+        // v1.1 优化v1.0
+        rotate1(nums, k);
+        // v1.0 最原始，耗时长
+        rotate0(nums, k);
         for (int i = 0; i < nums.length; i++) {
             System.out.print(nums[i] + "\t");
         }
