@@ -11,12 +11,14 @@ import java.util.Map;
  */
 public class IntersectionOfTwoArrays {
     public static void main(String[] args) {
-        /*int[] nums = new int[]{9};
-        int[] nums2 = new int[]{1,9,90,10, 1};*/
-        int[] nums = new int[]{1,2,2,1};
-        int[] nums2 = new int[]{2,2};
-        // 利用map
+        int[] nums = new int[]{9};
+        int[] nums2 = new int[]{1,9,90,10, 1};
+        /*int[] nums = new int[]{1,2,2,1};
+        int[] nums2 = new int[]{2,2};*/
+        // 排序 + 双指针
         int[] ints = intersect(nums, nums2);
+        // 利用map
+//        int[] ints = intersect1(nums, nums2);
         // 利用排序
 //        int[] ints = intersect0(nums, nums2);
         for (int num : ints) {
@@ -24,15 +26,43 @@ public class IntersectionOfTwoArrays {
         }
     }
 
-
     /**
      *
-     * 使用map
+     * 打败87%多
+     * 排序 + 双指针
+     * Times: O(max(nlogn, mlogm, n, m))
+     * Spaces: O(1)
      * @param nums1
      * @param nums2
      * @return
      */
     public static int[] intersect(int[] nums1, int[] nums2) {
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
+        int[] aa = new int[Math.min(nums1.length, nums2.length)];
+        int n1i = 0, n2i = 0, aai = 0;
+        while (n1i < nums1.length && n2i < nums2.length){
+            if(nums1[n1i] < nums2[n2i]){
+                n1i++;
+            }else if(nums1[n1i] == nums2[n2i]){
+                aa[aai++] = nums1[n1i];
+                n1i++;
+                n2i++;
+            }else{
+                n2i++;
+            }
+        }
+        return Arrays.copyOfRange(aa, 0, aai);
+    }
+
+    /**
+     * 打败60%多
+     * 使用map
+     * @param nums1
+     * @param nums2
+     * @return
+     */
+    public static int[] intersect1(int[] nums1, int[] nums2) {
         if (nums1.length > nums2.length) {
             return intersect(nums2, nums1);
         }
@@ -70,6 +100,7 @@ public class IntersectionOfTwoArrays {
     }
 
     /**
+     * 打败60%多
      * 先排序
      * @param nums1
      * @param nums2
