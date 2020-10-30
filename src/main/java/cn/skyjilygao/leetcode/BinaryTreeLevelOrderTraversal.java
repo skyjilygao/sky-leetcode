@@ -17,7 +17,8 @@ public class BinaryTreeLevelOrderTraversal {
     public static void main(String[] args) {
 //        Integer[] arr = {1,2,2,3,4,4,3};
 //        Integer[] arr = {3,9,20,null,null,15,7};
-        Integer[] arr = {3};
+//        Integer[] arr = {3};
+        Integer[] arr = {1,null,2,3};
         TreeNode node = TreeNode.init(arr);
         System.out.println(levelOrder(node));
     }
